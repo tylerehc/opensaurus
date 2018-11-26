@@ -15,7 +15,6 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "client-install": "npm install --prefix client",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -2,26 +2,25 @@ import React, { Component} from 'react';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
-import { getTasks, deleteTask } from '../actions/taskActions';
-import MemberDropdown from './MemberDropdown';
+import { getMembers, deleteMember } from '../actions/memberActions';
 import PropTypes from 'prop-types';
 
-class TaskList extends Component {
+class MemberList extends Component {
   componentDidMount() {
-    this.props.getTasks();
+    this.props.getMembers();
   }
 
   onDeleteClick = (id) => {
-    this.props.deleteTask(id);
+    this.props.deleteMember(id);
   }
 
   render() {
-    const { tasks } = this.props.task;
+    const { members } = this.props.member;
     return(
-      <Container style={{marginBottom: 50}}>
+      <Container>
         <ListGroup>
-          <TransitionGroup className="task-list">
-            {tasks.map(({ _id, name, tokenValue }) => (
+          <TransitionGroup className="member-list">
+            {members.map(({ _id, name }) => (
                 <CSSTransition key={_id} timeout={500} classNames="fade">
                   <ListGroupItem>
                     <Button
@@ -32,9 +31,7 @@ class TaskList extends Component {
                     >
                       &times;
                     </Button>
-                    <div className="inline"><div className="field-label">Task:</div> {name}</div>
-                    <div className="inline"><div className="field-label">Value (tokens):</div> {tokenValue}</div>
-                    <div className="float-right inline"><MemberDropdown /></div>
+                    <div className="inline"><div className="field-label">Member:</div> {name}</div>
                   </ListGroupItem>
                 </CSSTransition>
             ))}
@@ -47,16 +44,16 @@ class TaskList extends Component {
   }
 }
 
-TaskList.propTypes = {
-  getTasks: PropTypes.func.isRequired,
-  task: PropTypes.object.isRequired
+MemberList.propTypes = {
+  getMembers: PropTypes.func.isRequired,
+  member: PropTypes.object.isRequired
 }
 
 const mapStatetoProps = (state) => ({
-  task: state.task
+  member: state.member
 });
 
 export default connect(
   mapStatetoProps,
-  { getTasks, deleteTask }
-)(TaskList);
+  { getMembers, deleteMember }
+)(MemberList);

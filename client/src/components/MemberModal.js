@@ -10,9 +10,9 @@ import {
   Input
 } from 'reactstrap';
 import { connect } from 'react-redux';
-import { addTask } from '../actions/taskActions';
+import { addMember } from '../actions/memberActions';
 
-class TaskModal extends Component {
+class MemberModal extends Component {
   state = {
     modal: false,
     name: ''
@@ -30,11 +30,10 @@ class TaskModal extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const newTask = {
-      name: this.state.name,
-      tokenValue: this.state.tokenValue
+    const newMember = {
+      name: this.state.name
     };
-    this.props.addTask(newTask);
+    this.props.addMember(newMember);
     this.toggle();
 
   }
@@ -46,35 +45,28 @@ class TaskModal extends Component {
           color="dark"
           style={{marginBottom: '2rem'}}
           onClick={this.toggle}
-        >Add Task</Button>
+        >Add Member</Button>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}
         >
-          <ModalHeader toggle={this.toggle}>Add Task to BRP</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Join BRP</ModalHeader>
           <ModalBody>
             <Form onSubmit={this.onSubmit}>
               <FormGroup>
-                <Label for="task">
+                <Label for="member">
                 <Input
                   type="text"
                   name="name"
-                  id="task"
-                  placeholder="Task Name"
-                  onChange={this.onChange}
-                />
-                <Input
-                  type="number"
-                  name="tokenValue"
-                  id="tokens"
-                  placeholder="Value (Tokens)"
+                  id="member"
+                  placeholder="Your Name"
                   onChange={this.onChange}
                 />
                 <Button
                   color="dark"
                   style={{marginTop: '2rem'}}
                   block
-                >Add Task</Button>
+                >Join</Button>
                 </Label>
               </FormGroup>
             </Form>
@@ -86,7 +78,7 @@ class TaskModal extends Component {
 }
 
 const mapStatetoProps = state => ({
-  task: state.task
+  member: state.member
 })
 
-export default connect(mapStatetoProps, {addTask})(TaskModal);
+export default connect(mapStatetoProps, {addMember})(MemberModal);

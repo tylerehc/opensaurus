@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_TASKS, ADD_TASK, DELETE_TASK, TASKS_LOADING} from './types';
+import {GET_TASKS, ADD_TASK, DELETE_TASK, UPDATE_TASK, TASKS_LOADING} from './types';
 
 export const getTasks = () => dispatch => {
   dispatch(setTasksLoading());
@@ -29,6 +29,14 @@ export const deleteTask = (id) => dispatch => {
     dispatch({
       type: DELETE_TASK,
       payload: id
+    }))
+};
+
+export const updateTask = (id, body) => dispatch => {
+  axios.put(`/api/tasks/${id}`, body).then(res =>
+    dispatch({
+      type: UPDATE_TASK,
+      payload: res.data
     }))
 };
 

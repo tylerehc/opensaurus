@@ -1,4 +1,4 @@
-import {GET_TASKS, ADD_TASK, DELETE_TASK, TASKS_LOADING} from '../actions/types';
+import {GET_TASKS, ADD_TASK, DELETE_TASK, UPDATE_TASK, TASKS_LOADING} from '../actions/types';
 
 
 const initialState = {
@@ -25,6 +25,17 @@ export default function(state = initialState, action) {
       return {
         ...state,
         tasks: state.tasks.filter(isSameById(action.payload))
+      };
+    case UPDATE_TASK:
+      const tasks = state.tasks.map(task => {
+        if (task._id === action.payload._id) {
+          return action.payload;
+        }
+        return task;
+      });
+      return {
+        ...state,
+        tasks
       };
     case TASKS_LOADING:
       return {

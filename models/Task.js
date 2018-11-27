@@ -9,6 +9,10 @@ const TaskSchema = new Schema({
   tokenValue: {
     type: Number,
   },
+  owner: {
+    type: String,
+    default: 'Bond'
+  },
   date: {
     type: Date,
     default: Date.now

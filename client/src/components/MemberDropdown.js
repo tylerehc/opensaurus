@@ -2,34 +2,46 @@ import React, { Component} from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { connect } from 'react-redux';
 import { getMembers } from '../actions/memberActions';
+import { updateTask } from '../actions/taskActions';
 import PropTypes from 'prop-types';
 
 class MemberDropdown extends Component {
   constructor(props) {
     super(props);
+    this.handleTaskUpdate = this.handleTaskUpdate.bind(this);
+  }
+  state = {
+    dropdownOpen: false,
+    // not sure if name is needed
+    name: ''
+  };
 
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      dropdownOpen: false
-    };
+  toggle = () => {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
   }
 
-  toggle() {
-    this.setState(prevState => ({
-      dropdownOpen: !prevState.dropdownOpen
-    }));
+  // handleTaskUpdate(name) {
+  //   const taskId  = this.props.taskId;
+  //   this.props.updateTask(taskId, {owner: name})
+  // }
+
+  handleTaskUpdate (name) {
+    const taskId  = this.props.taskId;
+    this.props.updateTask(taskId, {owner: name})
   }
 
   render() {
     const { members } = this.props.member;
     return (
       <div>
-        <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-          <DropdownToggle caret>Claim Task</DropdownToggle>
+        <Dropdown isOpen={this.state.dropdownOpen} onClick={this.toggle}>
+          <DropdownToggle caret >Claim Task</DropdownToggle>
           <DropdownMenu>
             <DropdownItem header>Member List</DropdownItem>
             {members.map(({ name }) => (
-            <DropdownItem key="{_id}">{name}</DropdownItem>
+            <DropdownItem key="{_id}" onClick={() => this.handleTaskUpdate(name)}>{name}</DropdownItem>
               ))}
           </DropdownMenu>
         </Dropdown>
@@ -37,15 +49,6 @@ class MemberDropdown extends Component {
     );
   }
 }
-
-
-
-
-
-
-
-
-
 
 
 MemberDropdown.propTypes = {
@@ -57,7 +60,12 @@ const mapStatetoProps = (state) => ({
   member: state.member
 });
 
+const mapDispatchToProps = {
+  updateTask: updateTask,
+  getMembers
+};
+
 export default connect(
   mapStatetoProps,
-  { getMembers }
+  mapDispatchToProps
 )(MemberDropdown);

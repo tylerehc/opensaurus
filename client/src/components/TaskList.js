@@ -21,7 +21,7 @@ class TaskList extends Component {
       <Container style={{marginBottom: 50}}>
         <ListGroup>
           <TransitionGroup className="task-list">
-            {tasks.map(({ _id, name, tokenValue }) => (
+            {tasks.map(({ _id, name, tokenValue, owner }) => (
                 <CSSTransition key={_id} timeout={500} classNames="fade">
                   <ListGroupItem>
                     <Button
@@ -33,8 +33,9 @@ class TaskList extends Component {
                       &times;
                     </Button>
                     <div className="inline"><div className="field-label">Task:</div> {name}</div>
-                    <div className="inline"><div className="field-label">Value (tokens):</div> {tokenValue}</div>
-                    <div className="float-right inline"><MemberDropdown /></div>
+                    <div className="inline"><div className="field-label">Value (BRPT):</div> {tokenValue}</div>
+                    <div className="inline"><div className="field-label">Owner:</div> {owner}</div>
+                    <div className="float-right inline"><MemberDropdown taskId={_id} /></div>
                   </ListGroupItem>
                 </CSSTransition>
             ))}

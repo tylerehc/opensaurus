@@ -34,6 +34,14 @@ router.delete('/tasks/:id', (req, res) => {
     .catch(err => res.status(404).json({success: false}));
 });
 
+// @route   UPDATE api/tasks
+// @desc    Update a task
+// @access  Public
+router.put('/tasks/:id', (req, res) => {
+  Task.findByIdAndUpdate(req.params.id, {owner: req.body.owner}, { new: true })
+    .then(task => res.status(201).json(task));
+});
+
 // @route   GET api/tasks
 // @desc    Get All tasks
 // @access  Public

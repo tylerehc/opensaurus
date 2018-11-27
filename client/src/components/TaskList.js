@@ -18,11 +18,9 @@ class TaskList extends Component {
     const { tasks } = this.props.task;
     return(
       <Container>
-
-
         <ListGroup>
           <TransitionGroup className="task-list">
-            {tasks.map(({ _id, name }) => (
+            {tasks.map(({ _id, name, tokenValue }) => (
                 <CSSTransition key={_id} timeout={500} classNames="fade">
                   <ListGroupItem>
                     <Button
@@ -33,7 +31,8 @@ class TaskList extends Component {
                     >
                       &times;
                     </Button>
-                    {name}
+                    <div className="inline"><div className="field-label">Task:</div> {name}</div>
+                    <div className="inline"><div className="field-label">Value (tokens):</div> {tokenValue}</div>
                   </ListGroupItem>
                 </CSSTransition>
             ))}

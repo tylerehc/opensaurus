@@ -31,11 +31,10 @@ class TaskModal extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const newTask = {
-      name: this.state.name
-    }
-
+      name: this.state.name,
+      tokenValue: this.state.tokenValue
+    };
     this.props.addTask(newTask);
-
     this.toggle();
 
   }
@@ -62,6 +61,13 @@ class TaskModal extends Component {
                   name="name"
                   id="task"
                   placeholder="Task Name"
+                  onChange={this.onChange}
+                />
+                <Input
+                  type="number"
+                  name="tokenValue"
+                  id="tokens"
+                  placeholder="Value (Tokens)"
                   onChange={this.onChange}
                 />
                 <Button

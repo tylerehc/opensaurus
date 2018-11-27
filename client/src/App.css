@@ -19,3 +19,14 @@
   opacity: 0.01;
   transition: opacity 1000ms ease-in;
 }
+
+.inline {
+  display: inline-block;
+}
+
+.field-label {
+  margin-left: .5rem;
+  font-weight: 600;
+  display: inline-block;
+  color: red;
+}

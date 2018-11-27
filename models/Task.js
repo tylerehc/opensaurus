@@ -6,6 +6,9 @@ const TaskSchema = new Schema({
     type: String,
     required: true
   },
+  tokenValue: {
+    type: Number,
+  },
   date: {
     type: Date,
     default: Date.now

@@ -3,6 +3,7 @@ import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
 import { getTasks, deleteTask } from '../actions/taskActions';
+import MemberDropdown from './MemberDropdown';
 import PropTypes from 'prop-types';
 
 class TaskList extends Component {
@@ -15,7 +16,7 @@ class TaskList extends Component {
   }
 
   render() {
-    const { tasks, loading } = this.props.task;
+    const { tasks } = this.props.task;
     return(
       <Container style={{marginBottom: 50}}>
         <ListGroup>
@@ -33,6 +34,7 @@ class TaskList extends Component {
                     </Button>
                     <div className="inline"><div className="field-label">Task:</div> {name}</div>
                     <div className="inline"><div className="field-label">Value (tokens):</div> {tokenValue}</div>
+                    <div className="float-right inline"><MemberDropdown /></div>
                   </ListGroupItem>
                 </CSSTransition>
             ))}

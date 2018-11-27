@@ -15,8 +15,7 @@ class MemberList extends Component {
   }
 
   render() {
-    const { members, loading } = this.props.member;
-    console.log(members, 'members');
+    const { members } = this.props.member;
     return(
       <Container>
         <ListGroup>

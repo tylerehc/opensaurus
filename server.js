@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-const tasks = require('./routes/api/tasks');
-
+const routes = require('./routes/api/routes');
 
 // init app
 const app = express();
@@ -21,7 +20,7 @@ mongoose
   .catch(err => console.log(err));
 
 // Use Routes
-app.use('/api/tasks', tasks);
+app.use('/api/', routes);
 
 // Serve static assets in production
 

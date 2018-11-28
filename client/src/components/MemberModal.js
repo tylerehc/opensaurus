@@ -1,5 +1,6 @@
 import React, {Component } from 'react';
 import {
+  Container,
   Button,
   Modal,
   ModalHeader,
@@ -41,11 +42,13 @@ class MemberModal extends Component {
   render() {
     return(
       <div>
-        <Button
-          color="dark"
-          style={{marginBottom: '2rem'}}
-          onClick={this.toggle}
-        >Add Member</Button>
+        <Container>
+          <Button
+            color="dark"
+            style={{marginBottom: '1rem'}}
+            onClick={this.toggle}
+          >Add Member</Button>
+        </Container>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}

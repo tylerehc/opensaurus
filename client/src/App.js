@@ -10,6 +10,7 @@ import TaskList from './components/TaskList';
 import TaskModal from './components/TaskModal';
 import MemberList from './components/MemberList';
 import MemberModal from './components/MemberModal';
+import ClaimedTaskList from './components/ClaimedTaskList';
 
 
 // Styling
@@ -25,9 +26,10 @@ class App extends Component {
         <AppNavbar />
         <Container>
           <TaskModal />
-          <TaskList />
+          <TaskList listOwner={'Unclaimed'}/>
           <MemberModal />
           <MemberList />
+          <ClaimedTaskList />
         </Container>
       </div>
     </Provider>

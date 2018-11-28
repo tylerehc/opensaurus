@@ -1,10 +1,13 @@
 import React, { Component} from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { connect } from 'react-redux';
+
 import { getTasks, deleteTask } from '../actions/taskActions';
 import MemberDropdown from './MemberDropdown';
-import PropTypes from 'prop-types';
+
 
 class TaskList extends Component {
   componentDidMount() {
@@ -16,12 +19,15 @@ class TaskList extends Component {
   }
 
   render() {
-    const { tasks } = this.props.task;
+    const { listOwner }  = this.props;
+    const listOwnerTasks = this.props.task.tasks.filter(task => task.owner === listOwner)
     return(
+
       <Container style={{marginBottom: 50}}>
         <ListGroup>
           <TransitionGroup className="task-list">
-            {tasks.map(({ _id, name, tokenValue, owner }) => (
+            <h3>List Owner: {listOwner}</h3>
+            {listOwnerTasks.map(({ _id, name, tokenValue, owner }) => (
                 <CSSTransition key={_id} timeout={500} classNames="fade">
                   <ListGroupItem>
                     <Button
@@ -34,15 +40,12 @@ class TaskList extends Component {
                     </Button>
                     <div className="inline"><div className="field-label">Task:</div> {name}</div>
                     <div className="inline"><div className="field-label">Value (BRPT):</div> {tokenValue}</div>
-                    <div className="inline"><div className="field-label">Owner:</div> {owner}</div>
                     <div className="float-right inline"><MemberDropdown taskId={_id} /></div>
                   </ListGroupItem>
                 </CSSTransition>
             ))}
           </TransitionGroup>
-
         </ListGroup>
-
       </Container>
     )
   }

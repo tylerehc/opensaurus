@@ -17,7 +17,7 @@ class MemberList extends Component {
   render() {
     const { members } = this.props.member;
     return(
-      <Container>
+      <Container style={{marginBottom: 50}}>
         <ListGroup>
           <TransitionGroup className="member-list">
             {members.map(({ _id, name }) => (

@@ -11,7 +11,7 @@ const TaskSchema = new Schema({
   },
   owner: {
     type: String,
-    default: 'Bond'
+    default: 'Unclaimed'
   },
   date: {
     type: Date,

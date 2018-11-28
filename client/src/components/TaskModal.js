@@ -1,5 +1,6 @@
 import React, {Component } from 'react';
 import {
+  Container,
   Button,
   Modal,
   ModalHeader,
@@ -42,11 +43,13 @@ class TaskModal extends Component {
   render() {
     return(
       <div>
-        <Button
-          color="dark"
-          style={{marginBottom: '2rem'}}
-          onClick={this.toggle}
-        >Add Task</Button>
+        <Container>
+          <Button
+            color="dark"
+            style={{marginBottom: '2rem'}}
+            onClick={this.toggle}
+          >Add Task</Button>
+        </Container>
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}

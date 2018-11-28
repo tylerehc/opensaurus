@@ -28,28 +28,27 @@ class MemberDropdown extends Component {
   // }
 
   handleTaskUpdate (name) {
-    const taskId  = this.props.taskId;
+    const {taskId}  = this.props;
     this.props.updateTask(taskId, {owner: name})
   }
 
   render() {
     const { members } = this.props.member;
-    return (
-      <div>
-        <Dropdown isOpen={this.state.dropdownOpen} onClick={this.toggle}>
-          <DropdownToggle caret >Claim Task</DropdownToggle>
-          <DropdownMenu>
-            <DropdownItem header>Member List</DropdownItem>
-            {members.map(({ name }) => (
-            <DropdownItem key="{_id}" onClick={() => this.handleTaskUpdate(name)}>{name}</DropdownItem>
-              ))}
-          </DropdownMenu>
-        </Dropdown>
-      </div>
-    );
+      return (
+        <div>
+          <Dropdown isOpen={this.state.dropdownOpen} onClick={this.toggle}>
+            <DropdownToggle caret >Claim Task</DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem header>Member List</DropdownItem>
+              {members.map(({ name }) => (
+              <DropdownItem key="{_id}" onClick={() => this.handleTaskUpdate(name)}>{name}</DropdownItem>
+                ))}
+            </DropdownMenu>
+          </Dropdown>
+        </div>
+      );
   }
 }
-
 
 MemberDropdown.propTypes = {
   getMembers: PropTypes.func.isRequired,

@@ -10,7 +10,6 @@ class ClaimedTaskList extends Component {
   componentDidMount() {
     this.props.getMembers();
   }
-  
   render() {
     const { members } = this.props.member;
     return(

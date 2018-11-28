@@ -30,3 +30,11 @@
   display: inline-block;
   color: red;
 }
+
+label {
+  display: block !important;
+}
+
+input {
+  margin-bottom: .5rem;
+}

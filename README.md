@@ -1,8 +1,6 @@
 # OpenSaurus
 
-> A project management tool the generates and stores tokens for completed tasks. Tokens are used to vote on project decisions, such as new members, new features, and profit distribution.
-
-> Multiple projects may be managed within the same instance of OpenSaurus. In multi-project networks, the same token(s) rewarded for a task is used to vote on both project and network decisions.
+> A project management tool the generates and stores tokens for completed tasks. Tokens are used to vote on project decisions, such as new members, new features, and profit distribution. Multiple projects may be managed within the same instance of OpenSaurus. In multi-project networks, the same token(s) rewarded for a task is used to vote on both project and network decisions.
 
 ## Quick Start
 
@@ -12,6 +10,10 @@ npm install
 
 # Install dependencies for client
 npm run client-install
+
+# Insert dev.js
+Contact a project maintainer for a dev.js file and insert it into ./config or create your own.
+module.exports = {mongoURI: [insert your URI here]};
 
 # Run the client & server with concurrently
 npm run dev

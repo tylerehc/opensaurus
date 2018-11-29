@@ -22,7 +22,9 @@ router.get('/tasks/', (req, res) => {
 router.post('/tasks/', (req, res) => {
   const newTask = new Task({
     name: req.body.name,
-    tokenValue: req.body.tokenValue
+    tokenValue: req.body.tokenValue,
+    dollarValue: req.body.dollarValue,
+    project: req.body.project
   });
   newTask.save().then(task => res.json(task));
 });

@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-// Task Model
+
 const Task = require('../../models/Task');
 const Member = require('../../models/Member');
+const Token = require('../../models/Token');
+
 
 // @route   GET api/tasks
 // @desc    Get All tasks
@@ -69,5 +71,24 @@ router.delete('/members/:id', (req, res) => {
     .catch(err => res.status(404).json({success: false}));
 });
 
+// @route   GET api/tokens
+// @desc    Get All tokens
+// @access  Public
+router.get('/tokens/', (req, res) => {
+  Token.find()
+    .sort({ date: -1 })
+    .then(tokens => res.json(tokens));
+});
+
+// @route   POST api/tokens
+// @desc    Create a token
+// @access  Public
+router.post('/tokens/', (req, res) => {
+  const newToken = new Token({
+    tokenOwner: req.body.tokenOwner,
+    project: req.body.project
+  });
+  newToken.save().then(token => res.json(token));
+});
 
 module.exports = router;

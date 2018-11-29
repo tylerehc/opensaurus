@@ -19,10 +19,9 @@ class TaskList extends Component {
   }
 
   render() {
-    const { listOwner }  = this.props;
+    const { listOwner }  = this.props
     const listOwnerTasks = this.props.task.tasks.filter(task => task.owner === listOwner)
     return(
-
       <Container style={{marginBottom: 50}}>
         <ListGroup>
           <TransitionGroup className="task-list">

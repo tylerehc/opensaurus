@@ -7,7 +7,7 @@ const TaskSchema = new Schema({
     required: true
   },
   tokenValue: {
-    type: Number,
+    type: Number
   },
   owner: {
     type: String,

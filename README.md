@@ -12,8 +12,7 @@ npm install
 npm run client-install
 
 # Insert dev.js
-Contact a project maintainer for a dev.js file and insert it into ./config or create your own.
-module.exports = {mongoURI: [insert your URI here]};
+Get dev.js file from an admin and insert it into ./config.
 
 # Run the client & server with concurrently
 npm run dev

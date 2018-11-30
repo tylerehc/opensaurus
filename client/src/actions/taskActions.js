@@ -33,6 +33,7 @@ export const deleteTask = (id) => dispatch => {
 };
 
 export const updateTask = (id, body) => dispatch => {
+  console.log('()()()(()())', body)
   axios.put(`/api/tasks/${id}`, body).then(res =>
     dispatch({
       type: UPDATE_TASK,

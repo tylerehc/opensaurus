@@ -23,6 +23,10 @@ const TaskSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  complete: {
+    type: Boolean,
+    default: false
+  },
   hours: {
     type: Number
   }

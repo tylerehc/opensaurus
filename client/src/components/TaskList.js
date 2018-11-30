@@ -7,6 +7,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { getTasks, deleteTask } from '../actions/taskActions';
 import MemberDropdown from './MemberDropdown';
+import CompleteTaskModal from './CompleteTaskModal';
 
 
 class TaskList extends Component {
@@ -42,6 +43,7 @@ class TaskList extends Component {
                     <div className="inline"><div className="field-label">Value (USD):</div> {dollarValue}</div>
                     <div className="inline"><div className="field-label">Project:</div> {project}</div>
                     <div className="float-right inline"><MemberDropdown taskId={_id} /></div>
+                    // <div className="float-right inline"><CompleteTaskModal taskId={_id} owner={owner} /></div>
                   </ListGroupItem>
                 </CSSTransition>
             ))}

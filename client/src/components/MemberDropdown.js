@@ -64,7 +64,4 @@ const mapDispatchToProps = {
   getMembers
 };
 
-export default connect(
-  mapStatetoProps,
-  mapDispatchToProps
-)(MemberDropdown);
+export default connect(mapStatetoProps, mapDispatchToProps)(MemberDropdown);

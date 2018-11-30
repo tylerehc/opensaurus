@@ -24,7 +24,9 @@ router.post('/tasks/', (req, res) => {
     name: req.body.name,
     tokenValue: req.body.tokenValue,
     dollarValue: req.body.dollarValue,
-    project: req.body.project
+    project: req.body.project,
+    hours: req.body.hours,
+    complete: req.body.complete
   });
   newTask.save().then(task => res.json(task));
 });
@@ -42,8 +44,14 @@ router.delete('/tasks/:id', (req, res) => {
 // @desc    Update a task
 // @access  Public
 router.put('/tasks/:id', (req, res) => {
-  Task.findByIdAndUpdate(req.params.id, {owner: req.body.owner}, { new: true })
-    .then(task => res.status(201).json(task));
+  Task.findByIdAndUpdate(req.params.id,
+    req.body.owner ? { owner: req.body.owner } : { hours: req.body.hours }, { new: true })
+    .then(task => {
+      res.status(201).json(task)
+    })
+    .catch(err => {
+      console.log('Our error', err)
+    })
 });
 
 // @route   GET api/tasks

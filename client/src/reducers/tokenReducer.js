@@ -1,4 +1,4 @@
-import {GET_TOKENS, ADD_TOKEN, TASKS_LOADING} from '../actions/types';
+import {GET_TOKENS, ADD_TOKEN, TOKENS_LOADING} from '../actions/tokens';
 
 
 const initialState = {
@@ -13,15 +13,15 @@ export default function(state = initialState, action) {
     case GET_TOKENS:
       return {
         ...state,
-        tasks: action.payload,
+        tokens: action.payload,
         loading: false
       };
     case ADD_TOKEN:
       return {
         ...state,
-        tasks: [action.payload, ...state.tasks]
+        tokens: [action.payload, ...state.tokens]
       };
-    case TASKS_LOADING:
+    case TOKENS_LOADING:
       return {
         ...state,
         loading: true

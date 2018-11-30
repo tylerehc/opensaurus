@@ -34,6 +34,7 @@ class CompleteTaskModal extends Component {
     const { taskId } = this.props
     const { hours } = this.state
     this.props.updateTask(taskId, {hours: hours});
+    this.props.updateTask(taskId, {complete: true});
     this.toggle();
 
   }
@@ -44,7 +45,6 @@ class CompleteTaskModal extends Component {
         <Container>
           <Button
             color="success"
-            style={{marginBottom: '2rem'}}
             onClick={this.toggle}
           >Complete</Button>
         </Container>

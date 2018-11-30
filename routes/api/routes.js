@@ -44,14 +44,22 @@ router.delete('/tasks/:id', (req, res) => {
 // @desc    Update a task
 // @access  Public
 router.put('/tasks/:id', (req, res) => {
-  Task.findByIdAndUpdate(req.params.id,
-    req.body.owner ? { owner: req.body.owner } : { hours: req.body.hours }, { new: true })
-    .then(task => {
-      res.status(201).json(task)
-    })
-    .catch(err => {
-      console.log('Our error', err)
-    })
+  let owner = req.body.owner;
+  let hours = req.body.hours;
+  let complete = req.body.complete;
+
+  Task.findById(req.params.id, function (err, task) {
+    if (err) return handleError(err);
+
+    task.owner = owner || task.owner;
+    task.hours = hours || task.hours;
+    task.complete = complete || task.complete;
+
+    task.save(function(err, updatedTask) {
+        // if err return handleError(err);
+        return res.send(updatedTask);
+    });
+  });
 });
 
 // @route   GET api/tasks

@@ -21,13 +21,15 @@ class TaskList extends Component {
 
   render() {
     const { listOwner }  = this.props
-    const listOwnerTasks = this.props.task.tasks.filter(task => task.owner === listOwner)
+    const { taskComplete } = this.props
+    const listOwnerTasks = this.props.task.tasks.filter(task => task.owner === listOwner && task.complete === taskComplete)
     return(
       <Container style={{marginBottom: 50}}>
         <ListGroup>
           <TransitionGroup className="task-list">
-            <h3>List Owner: {listOwner}</h3>
-            {listOwnerTasks.map(({ _id, name, tokenValue, dollarValue, project, owner }) => (
+
+            <h4>{listOwner}</h4>
+            {listOwnerTasks.map(({ _id, name, tokenValue, dollarValue, project }) => (
                 <CSSTransition key={_id} timeout={500} classNames="fade">
                   <ListGroupItem>
                     <Button
@@ -43,7 +45,7 @@ class TaskList extends Component {
                     <div className="inline"><div className="field-label">Value (USD):</div> {dollarValue}</div>
                     <div className="inline"><div className="field-label">Project:</div> {project}</div>
                     <div className="float-right inline"><MemberDropdown taskId={_id} /></div>
-                    // <div className="float-right inline"><CompleteTaskModal taskId={_id} owner={owner} /></div>
+                    <div className="float-right inline"><CompleteTaskModal taskId={_id} /></div>
                   </ListGroupItem>
                 </CSSTransition>
             ))}

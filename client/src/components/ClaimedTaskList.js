@@ -11,11 +11,12 @@ class ClaimedTaskList extends Component {
     this.props.getMembers();
   }
   render() {
-    const { members } = this.props.member;
+    const { members } = this.props.member
+    const { taskComplete } = this.props
     return(
       <div>
         {members.map(({ name }) => (
-          <TaskList listOwner={name} />
+          <TaskList listOwner={name} taskComplete={taskComplete}/>
         ))}
       </div>
     )

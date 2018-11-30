@@ -13,7 +13,7 @@ export const getTokens = () => dispatch => {
     )
 };
 
-export const addToken = (task) => dispatch => {
+export const addToken = (token) => dispatch => {
   axios
     .post('/api/tokens', token)
     .then(res =>
@@ -25,5 +25,5 @@ export const addToken = (task) => dispatch => {
 };
 
 export const setTokensLoading = () => ({
-  type: TASKS_LOADING
+  type: TOKENS_LOADING
 });

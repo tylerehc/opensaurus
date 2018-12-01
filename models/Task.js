@@ -9,6 +9,12 @@ const TaskSchema = new Schema({
   tokenValue: {
     type: Number
   },
+  dollarValue: {
+    type: Number
+  },
+  project: {
+    type: String
+  },
   owner: {
     type: String,
     default: 'Unclaimed'
@@ -16,6 +22,13 @@ const TaskSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  complete: {
+    type: Boolean,
+    default: false
+  },
+  hours: {
+    type: Number
   }
 });
 

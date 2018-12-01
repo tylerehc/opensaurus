@@ -26,10 +26,13 @@ class App extends Component {
         <AppNavbar />
         <Container>
           <TaskModal />
-          <TaskList listOwner={'Unclaimed'}/>
+          <TaskList listOwner={'Unclaimed'} taskComplete={false}/>
           <MemberModal />
           <MemberList />
-          <ClaimedTaskList />
+          <h2>INCOMPLETED TASKS</h2>
+          <ClaimedTaskList taskComplete={false} />
+          <h2>COMPLETED TASKS</h2>
+          <ClaimedTaskList taskComplete={true} />
         </Container>
       </div>
     </Provider>

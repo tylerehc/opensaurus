@@ -22,7 +22,11 @@ router.get('/tasks/', (req, res) => {
 router.post('/tasks/', (req, res) => {
   const newTask = new Task({
     name: req.body.name,
-    tokenValue: req.body.tokenValue
+    tokenValue: req.body.tokenValue,
+    dollarValue: req.body.dollarValue,
+    project: req.body.project,
+    hours: req.body.hours,
+    complete: req.body.complete
   });
   newTask.save().then(task => res.json(task));
 });
@@ -40,8 +44,22 @@ router.delete('/tasks/:id', (req, res) => {
 // @desc    Update a task
 // @access  Public
 router.put('/tasks/:id', (req, res) => {
-  Task.findByIdAndUpdate(req.params.id, {owner: req.body.owner}, { new: true })
-    .then(task => res.status(201).json(task));
+  let owner = req.body.owner;
+  let hours = req.body.hours;
+  let complete = req.body.complete;
+
+  Task.findById(req.params.id, function (err, task) {
+    if (err) return handleError(err);
+
+    task.owner = owner || task.owner;
+    task.hours = hours || task.hours;
+    task.complete = complete || task.complete;
+
+    task.save(function(err, updatedTask) {
+        // if err return handleError(err);
+        return res.send(updatedTask);
+    });
+  });
 });
 
 // @route   GET api/tasks

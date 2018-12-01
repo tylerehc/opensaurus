@@ -33,7 +33,9 @@ class TaskModal extends Component {
     e.preventDefault();
     const newTask = {
       name: this.state.name,
-      tokenValue: this.state.tokenValue
+      tokenValue: this.state.tokenValue,
+      dollarValue: this.state.dollarValue,
+      project: this.state.project
     };
     this.props.addTask(newTask);
     this.toggle();
@@ -71,6 +73,20 @@ class TaskModal extends Component {
                   name="tokenValue"
                   id="tokens"
                   placeholder="Value (Tokens)"
+                  onChange={this.onChange}
+                />
+                <Input
+                  type="number"
+                  name="dollarValue"
+                  id="dollars"
+                  placeholder="Value (USD)"
+                  onChange={this.onChange}
+                />
+                <Input
+                  type="text"
+                  name="project"
+                  id="project"
+                  placeholder="Project"
                   onChange={this.onChange}
                 />
                 <Button

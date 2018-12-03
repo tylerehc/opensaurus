@@ -6,8 +6,6 @@ const initialState = {
   loading: false
 }
 
-const isSameById = payload => ({_id}) => payload !== _id;
-
 export default function(state = initialState, action) {
   switch(action.type) {
     case GET_TOKENS:

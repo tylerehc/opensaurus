@@ -3,11 +3,13 @@ import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
 import { getMembers, deleteMember } from '../actions/memberActions';
+import { getTokens } from '../actions/tokenActions';
 import PropTypes from 'prop-types';
 
 class MemberList extends Component {
   componentDidMount() {
     this.props.getMembers();
+    this.props.getTokens();
   }
 
   onDeleteClick = (id) => {
@@ -16,7 +18,7 @@ class MemberList extends Component {
 
   render() {
     const { members } = this.props.member;
-    // const { tokens } = this.props.token;
+    const { tokens } = this.props.token;
     return(
       <Container style={{marginBottom: 50}}>
         <ListGroup>
@@ -32,6 +34,9 @@ class MemberList extends Component {
                     >
                       &times;
                     </Button>
+
+
+
                     <div className="inline"><div className="field-label">Member:</div> {name}</div>
                   </ListGroupItem>
                 </CSSTransition>
@@ -51,10 +56,11 @@ MemberList.propTypes = {
 }
 
 const mapStatetoProps = (state) => ({
-  member: state.member
+  member: state.member,
+  token: state.token
 });
 
 export default connect(
   mapStatetoProps,
-  { getMembers, deleteMember }
+  { getMembers, deleteMember, getTokens }
 )(MemberList);

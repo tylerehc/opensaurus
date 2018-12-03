@@ -16,6 +16,7 @@ class MemberList extends Component {
 
   render() {
     const { members } = this.props.member;
+    // const { tokens } = this.props.token;
     return(
       <Container style={{marginBottom: 50}}>
         <ListGroup>

@@ -1,4 +1,4 @@
-import {GET_TOKENS, ADD_TOKEN, TOKENS_LOADING} from '../actions/tokens';
+import {GET_TOKENS, ADD_TOKEN, TOKENS_LOADING} from '../actions/types';
 
 
 const initialState = {

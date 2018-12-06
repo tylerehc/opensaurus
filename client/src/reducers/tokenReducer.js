@@ -1,12 +1,10 @@
-import {GET_TOKENS, ADD_TOKEN, TOKENS_LOADING} from '../actions/tokens';
+import {GET_TOKENS, ADD_TOKEN, TOKENS_LOADING} from '../actions/types';
 
 
 const initialState = {
   tokens: [],
   loading: false
 }
-
-const isSameById = payload => ({_id}) => payload !== _id;
 
 export default function(state = initialState, action) {
   switch(action.type) {

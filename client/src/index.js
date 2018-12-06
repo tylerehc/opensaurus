@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 const app = document.getElementById('root');
 
 ReactDOM.render(
-  <HashRouter history={History}>
+  <HashRouter>
     <Route path="/" component={App}>
 
     </Route>

@@ -12,6 +12,7 @@ import {
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { updateTask } from '../actions/taskActions';
+import { addToken } from '../actions/tokenActions';
 
 class CompleteTaskModal extends Component {
   state = {
@@ -31,10 +32,24 @@ class CompleteTaskModal extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const { taskId } = this.props
-    const { hours } = this.state
+    const { taskId } = this.props;
+    const { hours } = this.state;
+
     this.props.updateTask(taskId, {hours: hours});
     this.props.updateTask(taskId, {complete: true});
+
+    const newToken = {
+      tokenOwner: this.props.taskOwner,
+      project: this.props.taskProject
+    };
+
+    // create a number of tokens matching the tokenValue
+    const { taskTokenValue } = this.props;
+    var i;
+    for (i=0; i < taskTokenValue; i++){
+      this.props.addToken(newToken);
+    };
+
     this.toggle();
 
   }
@@ -84,7 +99,8 @@ const mapStatetoProps = state => ({
 })
 
 const mapDispatchToProps = {
-  updateTask: updateTask
+  updateTask: updateTask,
+  addToken: addToken
 };
 
 export default connect(mapStatetoProps, mapDispatchToProps)(CompleteTaskModal);

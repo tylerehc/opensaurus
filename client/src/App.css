@@ -38,3 +38,11 @@ label {
 input {
   margin-bottom: .5rem;
 }
+
+h4 {
+  text-decoration: underline;
+}
+
+.equation {
+  font-style: italic;
+}

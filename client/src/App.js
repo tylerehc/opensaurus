@@ -11,6 +11,7 @@ import TaskModal from './components/TaskModal';
 import MemberList from './components/MemberList';
 import MemberModal from './components/MemberModal';
 import ClaimedTaskList from './components/ClaimedTaskList';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 
 // Styling
@@ -33,6 +34,10 @@ class App extends Component {
           <ClaimedTaskList taskComplete={false} />
           <h2>COMPLETED TASKS</h2>
           <ClaimedTaskList taskComplete={true} />
+          <MessengerCustomerChat
+              pageId={2051927861494278}
+              appId={2274580786109830}
+          />
         </Container>
       </div>
     </Provider>

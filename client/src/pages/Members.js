@@ -2,16 +2,13 @@
 import React, { Component } from 'react';
 
 // Components
-import TaskList from '../components/TaskList';
-import TaskModal from '../components/TaskModal';
 import MemberList from '../components/MemberList';
 import MemberModal from '../components/MemberModal';
-import ClaimedTaskList from '../components/ClaimedTaskList';
 
 // Styling
 import { Container } from 'reactstrap';
 
-class Tasks extends Component {
+class Members extends Component {
   render() {
     return (
       <div className="Tasks">
@@ -24,4 +21,4 @@ class Tasks extends Component {
   }
 }
 
-export default Tasks;
+export default Members;

@@ -16,13 +16,8 @@ class Tasks extends Component {
     return (
       <div className="Tasks">
         <Container>
-          <TaskModal />
-          <h2>TASKS</h2>
-          <TaskList listOwner={'Unclaimed'} taskComplete={false}/>
-          <h2>INCOMPLETED TASKS</h2>
-          <ClaimedTaskList taskComplete={false} />
-          <h2>COMPLETED TASKS</h2>
-          <ClaimedTaskList taskComplete={true} />
+          <MemberModal />
+          <MemberList />
         </Container>
       </div>
     );

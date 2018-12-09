@@ -39,6 +39,10 @@ input {
   margin-bottom: .5rem;
 }
 
+h2 {
+  margin-top: 40px;
+}
+
 h4 {
   text-decoration: underline;
 }

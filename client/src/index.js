@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import About from './pages/About';
 import Home from './pages/Home';
 import Layout from './pages/Layout';
+import Members from './pages/Members';
 import Tasks from './pages/Tasks';
 
 const app = document.getElementById('root');
@@ -18,6 +19,7 @@ ReactDOM.render(
       <BrowserRouter>
         <Switch>
           <Route path="/tasks/" component={Tasks}></Route>
+          <Route path="/members/" component={Members}></Route>
           <Route path="/about/" component={About}></Route>
           <Route path="/" component={Home}></Route>
         </Switch>

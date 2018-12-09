@@ -40,6 +40,11 @@ class AppNavbar extends Component{
                       Tasks
                     </NavLink>
                   </NavItem>
+                  <NavItem>
+                    <NavLink href="/members/">
+                      Members
+                    </NavLink>
+                  </NavItem>
                 </Nav>
               </Collapse>
             </Container>

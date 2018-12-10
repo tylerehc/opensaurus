@@ -15,9 +15,9 @@ class Tasks extends Component {
       <div className="Tasks">
         <Container>
           <TaskModal />
-          <h2>TASKS</h2>
-          <TaskList listOwner={'Unclaimed'} taskComplete={false}/>
-          <h2>INCOMPLETED TASKS</h2>
+          <h2>AVAILABLE TASKS</h2>
+          <TaskList listOwner={''} taskComplete={false}/>
+          <h2>INCOMPLETE TASKS</h2>
           <ClaimedTaskList taskComplete={false} />
           <h2>COMPLETED TASKS</h2>
           <ClaimedTaskList taskComplete={true} />

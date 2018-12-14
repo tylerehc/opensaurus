@@ -1,16 +1,31 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 const router = express.Router();
-
+const { jwtSecret } = require('../../config/keys')
 
 const Task = require('../../models/Task');
 const Member = require('../../models/Member');
 const Token = require('../../models/Token');
 
+const JwtDecoder = (req, res, next) => {
+  const token = req.headers.token
+  if (token != 'null') {
+    jwt.verify(token, jwtSecret, (err, decodedToken) => {
+      // console.log(decodedToken);
+      // req.user = decodedToken;
+      next();
+    });
+  } else {
+    res.send({error: 'Missing Token in headers'})
+  }
+}
 
 // @route   GET api/tasks
 // @desc    Get All tasks
 // @access  Public
-router.get('/tasks/', (req, res) => {
+router.get('/tasks/', JwtDecoder, (req, res) => {
+  //console.log('req.user', req.user);
   Task.find()
     .sort({ date: -1 })
     .then(tasks => res.json(tasks));
@@ -73,11 +88,47 @@ router.get('/members/', (req, res) => {
 // @route   POST api/tasks
 // @desc    Create a task
 // @access  Public
-router.post('/members/', (req, res) => {
-  const newMember = new Member({
-    name: req.body.name,
+router.post('/members/register', (req, res) => {
+  bcrypt.hash(req.body.password, 8, function(err, hash) {
+    req.body.password = hash;
+    const newMember = new Member(req.body);
+    newMember.save().then(member => {
+      jwt.sign({email: req.body.email}, jwtSecret, (err, token) => {
+        res.send({
+          token,
+          name: member.name
+        });
+      })
+    });
   });
-  newMember.save().then(member => res.json(member));
+});
+
+// @route   POST api/tasks
+// @desc    Create a task
+// @access  Public
+router.post('/members/login', (req, res) => {
+  Member.findOne({email: req.body.email}, (err, member) => {
+    if (err) {
+      res.send(err)
+    } else if (!member) {
+      res.send({error: 'Invalid Email/Password'});
+    } else {
+      bcrypt.compare(req.body.password, member.password, function(err, validPassword) {
+        if (err) {
+          res.send(err)
+        } else if (validPassword) {
+          jwt.sign({email: req.body.email}, jwtSecret, (err, token) => {
+            res.send({
+              token,
+              name: member.name
+            });
+          })
+        } else {
+          res.send({error: 'Invalid Email/Password'})
+        }
+      });
+    }
+  });
 });
 
 // @route   DELETE api/tasks

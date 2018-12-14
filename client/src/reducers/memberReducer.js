@@ -1,9 +1,10 @@
-import {GET_MEMBERS, ADD_MEMBER, DELETE_MEMBER, MEMBERS_LOADING} from '../actions/types';
+import {GET_MEMBERS, ADD_MEMBER, DELETE_MEMBER, MEMBERS_LOADING, LOGIN_MEMBER} from '../actions/types';
 
 
 const initialState = {
   members: [],
-  loading: false
+  loading: false,
+  member: {}
 }
 
 const isSameById = payload => ({_id}) => payload !== _id;
@@ -20,6 +21,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         members: [action.payload, ...state.members]
+      };
+    case LOGIN_MEMBER:
+      return {
+        ...state,
+        member: action.payload
       };
     case DELETE_MEMBER:
       return {

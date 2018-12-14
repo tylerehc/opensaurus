@@ -4,13 +4,19 @@ import {GET_TASKS, ADD_TASK, DELETE_TASK, UPDATE_TASK, TASKS_LOADING} from './ty
 export const getTasks = () => dispatch => {
   dispatch(setTasksLoading());
   axios
-    .get('/api/tasks')
-    .then(res =>
+    .get('/api/tasks', {
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    })
+    .then(res => {
       dispatch({
         type: GET_TASKS,
         payload: res.data
       })
-    )
+    }).catch(err => {
+      // error message
+    })
 };
 
 export const addTask = (task) => dispatch => {

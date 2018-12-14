@@ -10,3 +10,4 @@ export const MEMBERS_LOADING = 'MEMBERS_LOADING';
 export const GET_TOKENS = 'GET_TOKENS';
 export const ADD_TOKEN = 'ADD_TOKEN';
 export const TOKENS_LOADING = 'TOKENS_LOADING';
+export const LOGIN_MEMBER = 'LOGIN_MEMBER';

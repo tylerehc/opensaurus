@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import Layout from './pages/Layout';
 import Members from './pages/Members';
 import Tasks from './pages/Tasks';
+import Login from './pages/Login';
 
 const app = document.getElementById('root');
 
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Switch>
           <Route path="/tasks/" component={Tasks}></Route>
           <Route path="/members/" component={Members}></Route>
+          <Route path="/login/" component={Login}></Route>
           <Route path="/about/" component={About}></Route>
           <Route path="/" component={Home}></Route>
         </Switch>

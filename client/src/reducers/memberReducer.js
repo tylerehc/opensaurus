@@ -5,6 +5,7 @@ const initialState = {
   members: [],
   loading: false,
   member: {}
+
 }
 
 const isSameById = payload => ({_id}) => payload !== _id;

@@ -49,7 +49,7 @@ router.post('/tasks/', (req, res) => {
 // @route   DELETE api/tasks
 // @desc    Delete a task
 // @access  Public
-router.delete('/tasks/:id', (req, res) => {
+router.delete('/tasks/:id', JwtDecoder, (req, res) => {
   Task.findById(req.params.id)
     .then(task => task.remove().then(() => res.json({success: true})))
     .catch(err => res.status(404).json({success: false}));
@@ -134,7 +134,7 @@ router.post('/members/login', (req, res) => {
 // @route   DELETE api/tasks
 // @desc    Delete a task
 // @access  Public
-router.delete('/members/:id', (req, res) => {
+router.delete('/members/:id', JwtDecoder, (req, res) => {
   Member.findById(req.params.id)
     .then(member => member.remove().then(() => res.json({success: true})))
     .catch(err => res.status(404).json({success: false}));

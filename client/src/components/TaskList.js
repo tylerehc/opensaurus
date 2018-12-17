@@ -22,6 +22,7 @@ class TaskList extends Component {
   render() {
     const { listOwner }  = this.props
     const { taskComplete } = this.props
+
     const listOwnerTasks = this.props.task.tasks.filter(task => task.owner === listOwner && task.complete === taskComplete)
     return(
       <Container style={{marginBottom: 50}}>
@@ -53,6 +54,7 @@ class TaskList extends Component {
         </ListGroup>
       </Container>
     )
+
   }
 }
 

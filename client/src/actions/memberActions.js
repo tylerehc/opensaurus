@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_MEMBERS, ADD_MEMBER, DELETE_MEMBER, MEMBERS_LOADING, LOGIN_MEMBER} from './types';
+import {GET_MEMBERS, ADD_MEMBER, DELETE_MEMBER, MEMBERS_LOADING, LOGIN_MEMBER_SUCCESS} from './types';
 
 export const getMembers = () => dispatch => {
   dispatch(setMembersLoading());
@@ -30,7 +30,7 @@ export const loginMember = (member) => dispatch => {
     .then(res => {
       console.log('login from action', res)
       dispatch({
-        type: LOGIN_MEMBER,
+        type: LOGIN_MEMBER_SUCCESS,
         payload: res.data
       });
       return res.data

@@ -12,8 +12,7 @@ const JwtDecoder = (req, res, next) => {
   const token = req.headers.token
   if (token != 'null') {
     jwt.verify(token, jwtSecret, (err, decodedToken) => {
-      // console.log(decodedToken);
-      // req.user = decodedToken;
+      isAuthenticated: true,
       next();
     });
   } else {
@@ -24,7 +23,7 @@ const JwtDecoder = (req, res, next) => {
 // @route   GET api/tasks
 // @desc    Get All tasks
 // @access  Public
-router.get('/tasks/', JwtDecoder, (req, res) => {
+router.get('/tasks/', (req, res) => {
   //console.log('req.user', req.user);
   Task.find()
     .sort({ date: -1 })
@@ -34,7 +33,7 @@ router.get('/tasks/', JwtDecoder, (req, res) => {
 // @route   POST api/tasks
 // @desc    Create a task
 // @access  Public
-router.post('/tasks/', (req, res) => {
+router.post('/tasks/', JwtDecoder, (req, res) => {
   const newTask = new Task({
     name: req.body.name,
     tokenValue: req.body.tokenValue,
@@ -58,7 +57,7 @@ router.delete('/tasks/:id', JwtDecoder, (req, res) => {
 // @route   UPDATE api/tasks
 // @desc    Update a task
 // @access  Public
-router.put('/tasks/:id', (req, res) => {
+router.put('/tasks/:id', JwtDecoder, (req, res) => {
   let owner = req.body.owner;
   let hours = req.body.hours;
   let complete = req.body.complete;

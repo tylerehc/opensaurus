@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
 
-// Components
+// Component
 
 class About extends Component {
   render() {

@@ -36,8 +36,8 @@ class AppNavbar extends Component{
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink href="/tasks/">
-                      Tasks
+                    <NavLink href="/networks/">
+                      Networks
                     </NavLink>
                   </NavItem>
                   <NavItem>

@@ -50,3 +50,11 @@ h4 {
 .equation {
   font-style: italic;
 }
+
+.network-button {
+  margin: 0 5% 0 0;
+}
+
+/* .network-buttons {
+  text-align: center;
+} */

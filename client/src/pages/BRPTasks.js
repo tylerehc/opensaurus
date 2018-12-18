@@ -9,10 +9,10 @@ import ClaimedTaskList from '../components/ClaimedTaskList';
 // Styling
 import { Container } from 'reactstrap';
 
-class Tasks extends Component {
+class BRPTasks extends Component {
   render() {
     return (
-      <div className="Tasks">
+      <div className="BRPTasks">
         <Container>
           <TaskModal />
           <h2>AVAILABLE TASKS</h2>
@@ -27,4 +27,4 @@ class Tasks extends Component {
   }
 }
 
-export default Tasks;
+export default BRPTasks;

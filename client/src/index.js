@@ -9,7 +9,9 @@ import About from './pages/About';
 import Home from './pages/Home';
 import Layout from './pages/Layout';
 import Members from './pages/Members';
-import Tasks from './pages/Tasks';
+import BRPTasks from './pages/BRPTasks';
+import Networks from './pages/Networks';
+import AboutBRP from './pages/AboutBRP';
 
 const app = document.getElementById('root');
 
@@ -18,9 +20,11 @@ ReactDOM.render(
     <Layout>
       <BrowserRouter>
         <Switch>
-          <Route path="/tasks/" component={Tasks}></Route>
+          <Route path="/networks/brp/tasks/" component={BRPTasks}></Route>
+          <Route path="/networks/" component={Networks}></Route>
           <Route path="/members/" component={Members}></Route>
           <Route path="/about/" component={About}></Route>
+          <Route path="/about/brp" component={AboutBRP}></Route>
           <Route path="/" component={Home}></Route>
         </Switch>
       </BrowserRouter>

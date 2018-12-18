@@ -10,8 +10,9 @@ const Token = require('../../models/Token');
 
 const JwtDecoder = (req, res, next) => {
   const token = req.headers.token
-  if (token != 'null') {
-    jwt.verify(token, jwtSecret, (err, decodedToken) => {
+  if (token != undefined) {
+    jwt.verify(token, jwtSecret, (err, decoded) => {
+      console.log(decoded);
       isAuthenticated: true,
       next();
     });
@@ -33,7 +34,7 @@ router.get('/tasks/', (req, res) => {
 // @route   POST api/tasks
 // @desc    Create a task
 // @access  Public
-router.post('/tasks/', JwtDecoder, (req, res) => {
+router.post('/tasks/', (req, res) => {
   const newTask = new Task({
     name: req.body.name,
     tokenValue: req.body.tokenValue,
@@ -47,7 +48,7 @@ router.post('/tasks/', JwtDecoder, (req, res) => {
 
 // @route   DELETE api/tasks
 // @desc    Delete a task
-// @access  Public
+// @access  Private
 router.delete('/tasks/:id', JwtDecoder, (req, res) => {
   Task.findById(req.params.id)
     .then(task => task.remove().then(() => res.json({success: true})))
@@ -56,7 +57,7 @@ router.delete('/tasks/:id', JwtDecoder, (req, res) => {
 
 // @route   UPDATE api/tasks
 // @desc    Update a task
-// @access  Public
+// @access  Private
 router.put('/tasks/:id', JwtDecoder, (req, res) => {
   let owner = req.body.owner;
   let hours = req.body.hours;
@@ -76,16 +77,16 @@ router.put('/tasks/:id', JwtDecoder, (req, res) => {
   });
 });
 
-// @route   GET api/tasks
-// @desc    Get All tasks
+// @route   GET api/members
+// @desc    Get All members
 // @access  Public
 router.get('/members/', (req, res) => {
   Member.find()
     .then(members => res.json(members));
 });
 
-// @route   POST api/tasks
-// @desc    Create a task
+// @route   POST api/members/regist
+// @desc    Create a member
 // @access  Public
 router.post('/members/register', (req, res) => {
   bcrypt.hash(req.body.password, 8, function(err, hash) {
@@ -132,7 +133,7 @@ router.post('/members/login', (req, res) => {
 
 // @route   DELETE api/tasks
 // @desc    Delete a task
-// @access  Public
+// @access  Private
 router.delete('/members/:id', JwtDecoder, (req, res) => {
   Member.findById(req.params.id)
     .then(member => member.remove().then(() => res.json({success: true})))

@@ -1,4 +1,4 @@
 module.exports = {
   mongoURI: process.env.MONGO_URI,
-  jwtSecret: "anythingcrazygoeshere"
+  jwtSecret: proces.env.JWTSECRET
 };

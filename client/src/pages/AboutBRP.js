@@ -5,7 +5,7 @@ import { Container } from 'reactstrap';
 // Components
 
 
-class About extends Component {
+class AboutBRP extends Component {
   render() {
     return (
       <div className="Home">
@@ -36,4 +36,4 @@ class About extends Component {
   }
 }
 
-export default About;
+export default AboutBRP;

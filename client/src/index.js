@@ -21,9 +21,9 @@ ReactDOM.render(
       <BrowserRouter>
         <Switch>
           <Route path="/networks/brp/tasks/" component={BRPTasks}></Route>
+          <Route path="/networks/brp/about/" component={AboutBRP}></Route>
           <Route path="/networks/" component={Networks}></Route>
           <Route path="/members/" component={Members}></Route>
-          <Route path="/about/brp" component={AboutBRP}></Route>
           <Route path="/about/" component={About}></Route>
           <Route path="/" component={Home}></Route>
         </Switch>

@@ -24,7 +24,7 @@ const JwtDecoder = (req, res, next) => {
 // @route   GET api/tasks
 // @desc    Get All tasks
 // @access  Public
-router.get('/tasks/', JwtDecoder, (req, res) => {
+router.get('/tasks/', (req, res) => {
   //console.log('req.user', req.user);
   Task.find()
     .sort({ date: -1 })

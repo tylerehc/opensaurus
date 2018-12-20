@@ -67,11 +67,11 @@ class About extends Component {
             For example, <a href="/networks/brp/about/">some newtworks </a>chooses to give a portion of each project’s tokens to every
             network member and to the network itself.</li>
 
-            <li><strong>Project Level Governance:</strong> New tasks, features,
+            <li><strong>Project-Level Voting:</strong> New tasks, features,
             initiatives, and project members are proposed and approved democratically
             by the projects’ token holders.</li>
 
-            <li><strong>Network Level Governance:</strong> Just as the projects
+            <li><strong>Network-Level Voting:</strong> Just as the projects
             adopt a radical democratic process, the network itself is directed
             by its members and their equity/tokens. This includes any income
             contributed to the network and the admission of new network projects.</li>

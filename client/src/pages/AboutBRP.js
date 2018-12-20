@@ -38,8 +38,6 @@ class AboutBRP extends Component {
           reinvesting in STEM education, we are able to further bolster our
           team and prospective talent pool.</p>
 
-
-
         </Container>
       </div>
     );

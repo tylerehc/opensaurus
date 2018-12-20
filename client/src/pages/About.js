@@ -33,6 +33,11 @@ class About extends Component {
 
           <ul>
 
+            <li><strong>Tokens:</strong> Tokens are the driving force behind
+            Opensauru’s governance structure. A token is rewarded for one expert hour of work contributed to a project.
+            A task is posted and given a token value. That value can be adjusted after the tasks completion based on
+            how long the member believed the task should have taken. Token holders approve this change.</li>
+
             <li><strong>Voice Share:</strong> Project decisions are directed
             by members exercising their voice shares. Voice shares flow from
             tokens by the method described below.</li>

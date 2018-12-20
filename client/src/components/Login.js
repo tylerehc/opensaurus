@@ -25,7 +25,7 @@ class Login extends Component {
     };
     this.props.loginMember(member).then(response => {
       console.log('loggen in', this.props);
-      localStorage.setItem('token', response.token);
+      
       this.props.history.replace('/tasks')
     }).catch(err => console.log('err during login'))
   }

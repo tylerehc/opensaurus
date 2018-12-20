@@ -21,7 +21,11 @@ export const getTasks = () => dispatch => {
 
 export const addTask = (task) => dispatch => {
   axios
-    .post('/api/tasks', task)
+    .post('/api/tasks', task, {
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    })
     .then(res =>
       dispatch({
         type: ADD_TASK,

@@ -28,7 +28,8 @@ export const loginMember = (member) => dispatch => {
   return axios
     .post('/api/members/login', member)
     .then(res => {
-      console.log('login from action', res)
+      console.log('login from action', res);
+      localStorage.setItem('token', res.token);
       dispatch({
         type: LOGIN_MEMBER_SUCCESS,
         payload: res.data

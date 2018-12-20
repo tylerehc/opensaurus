@@ -12,8 +12,6 @@ const JwtDecoder = (req, res, next) => {
   const token = req.headers.token
   if (token != undefined) {
     jwt.verify(token, jwtSecret, (err, decoded) => {
-      console.log(decoded);
-      isAuthenticated: true,
       next();
     });
   } else {

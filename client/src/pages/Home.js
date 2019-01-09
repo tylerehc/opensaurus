@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import { Container } from 'reactstrap';
 
 // Components
-
-
 class Home extends Component {
   render() {
     return (

@@ -21,7 +21,7 @@ class SecureRoute extends React.Component {
 
   render() {
     const token = localStorage.getItem('token');
-    if(!token) {
+    if(!token || token !== undefined) {
       localStorage.setItem('redirect', 'NOT_LOGGED_IN');
       this.props.history.replace('/login');
       return null;

@@ -28,7 +28,7 @@ class TaskList extends Component {
         <ListGroup>
           <TransitionGroup className="task-list">
 
-            <h4>{listOwner}</h4>
+            <h4>{listOwner.length > 0 ? listOwner : null}</h4>
             {listOwnerTasks.map(({ _id, name, owner, tokenValue, dollarValue, project }) => (
                 <CSSTransition key={_id} timeout={500} classNames="fade">
                   <ListGroupItem>

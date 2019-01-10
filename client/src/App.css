@@ -38,3 +38,23 @@ label {
 input {
   margin-bottom: .5rem;
 }
+
+h2 {
+  margin-top: 40px;
+}
+
+h4 {
+  text-decoration: underline;
+}
+
+.equation {
+  font-style: italic;
+}
+
+.network-button {
+  margin: 0 5% 0 0;
+}
+
+/* .network-buttons {
+  text-align: center;
+} */

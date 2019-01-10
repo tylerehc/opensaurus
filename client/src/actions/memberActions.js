@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_MEMBERS, ADD_MEMBER, DELETE_MEMBER, MEMBERS_LOADING} from './types';
+import {GET_MEMBERS, ADD_MEMBER, DELETE_MEMBER, MEMBERS_LOADING, LOGIN_MEMBER} from './types';
 
 export const getMembers = () => dispatch => {
   dispatch(setMembersLoading());
@@ -14,14 +14,27 @@ export const getMembers = () => dispatch => {
 };
 
 export const addMember = (member) => dispatch => {
-  axios
-    .post('/api/members', member)
+  return axios
+    .post('/api/members/register', member)
     .then(res =>
       dispatch({
         type: ADD_MEMBER,
         payload: res.data
       })
     )
+};
+
+export const loginMember = (member) => dispatch => {
+  return axios
+    .post('/api/members/login', member)
+    .then(res => {
+      console.log('login from action', res)
+      dispatch({
+        type: LOGIN_MEMBER,
+        payload: res.data
+      });
+      return res.data
+    })
 };
 
 export const deleteMember = (id) => dispatch => {

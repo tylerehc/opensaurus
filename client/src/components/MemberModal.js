@@ -32,11 +32,13 @@ class MemberModal extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const newMember = {
-      name: this.state.name
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password
+
     };
     this.props.addMember(newMember);
     this.toggle();
-
   }
 
   render() {
@@ -63,6 +65,20 @@ class MemberModal extends Component {
                   name="name"
                   id="member"
                   placeholder="Your Name"
+                  onChange={this.onChange}
+                />
+                <Input
+                  type="text"
+                  name="email"
+                  id="email"
+                  placeholder="Your Email"
+                  onChange={this.onChange}
+                />
+                <Input
+                  type="text"
+                  name="password"
+                  id="password"
+                  placeholder="Your Password"
                   onChange={this.onChange}
                 />
                 <Button

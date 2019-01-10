@@ -20,7 +20,9 @@
     "express": "^4.16.4",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.3.13",
-    "mongoose-float": "^1.0.3"
+    "mongoose-float": "^1.0.3",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.6"

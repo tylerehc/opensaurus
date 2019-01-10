@@ -1,4 +1,5 @@
 const express = require('express');
+const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const router = express.Router();
@@ -8,23 +9,28 @@ const Task = require('../../models/Task');
 const Member = require('../../models/Member');
 const Token = require('../../models/Token');
 
-const JwtDecoder = (req, res, next) => {
-  const token = req.headers.token
-  if (token != 'null') {
-    jwt.verify(token, jwtSecret, (err, decodedToken) => {
-      // console.log(decodedToken);
-      // req.user = decodedToken;
-      next();
-    });
-  } else {
-    res.send({error: 'Missing Token in headers'})
-  }
+
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+const  opts = {
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  secretOrKey: jwtSecret
 }
+
+const strategy = new JwtStrategy(opts, (jwt_payload, done) => {
+//  Member.findById(jwt_payload.sub).then(member => {
+//    return done(null, member)
+//  })
+  return done(null, {})
+})
+passport.use(strategy);
+
+
 
 // @route   GET api/tasks
 // @desc    Get All tasks
 // @access  Public
-router.get('/tasks/', JwtDecoder, (req, res) => {
+router.get('/tasks/', passport.authenticate('jwt', { session: false }), (req, res) => {
   //console.log('req.user', req.user);
   Task.find()
     .sort({ date: -1 })
@@ -103,8 +109,8 @@ router.post('/members/register', (req, res) => {
   });
 });
 
-// @route   POST api/tasks
-// @desc    Create a task
+// @route   POST api/members
+// @desc    Create a member
 // @access  Public
 router.post('/members/login', (req, res) => {
   Member.findOne({email: req.body.email}, (err, member) => {

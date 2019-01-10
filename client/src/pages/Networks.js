@@ -30,7 +30,7 @@ class About extends Component {
                 <CardSubtitle>Investing in US STEM Education</CardSubtitle>
                 <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
                 <div className="network-buttons">
-                <Button color="dark" className="network-button" href="/about/brp/">More Info</Button>
+                <Button color="dark" className="network-button" href="/networks/brp/about/">More Info</Button>
                 <Button color="dark" className="network-button" href="/networks/brp/tasks/">Tasks</Button>
                 </div>
               </CardBody>

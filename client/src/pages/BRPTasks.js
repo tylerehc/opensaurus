@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import TaskList from '../components/TaskList';
 import TaskModal from '../components/TaskModal';
 import ClaimedTaskList from '../components/ClaimedTaskList';
-import MemberModal from '../components/MemberModal';
+
 
 // Styling
 import { Container } from 'reactstrap';
@@ -23,7 +23,7 @@ class BRPTasks extends Component {
           <h2>COMPLETED TASKS</h2>
           <ClaimedTaskList taskComplete={true} />
           <h2>ADD MEMBERS</h2>
-          <MemberModal />
+
         </Container>
       </div>
     );

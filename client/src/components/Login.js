@@ -12,6 +12,14 @@ import { loginMember } from '../actions/memberActions';
 
 class Login extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: ''
+    }
+  }
+
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -31,8 +39,12 @@ class Login extends Component {
   }
 
   render() {
+    const redirectReason = localStorage.getItem('redirect')
+    localStorage.removeItem('redirect')
     return(
       <Container>
+        {redirectReason && <p>You Need to Login to see Tasks</p>}
+
         <Form onSubmit={this.onSubmit}>
           <FormGroup>
             <Label for="member">

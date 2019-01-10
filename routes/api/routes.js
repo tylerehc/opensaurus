@@ -14,20 +14,23 @@ const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const  opts = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: 'secret'
+  secretOrKey: jwtSecret
 }
 
 const strategy = new JwtStrategy(opts, (jwt_payload, done) => {
-  Member.findById(jwt_payload.sub).then(member => {
-    return done(null, member)
-  })
+//  Member.findById(jwt_payload.sub).then(member => {
+//    return done(null, member)
+//  })
+  return done(null, {})
 })
 passport.use(strategy);
+
+
 
 // @route   GET api/tasks
 // @desc    Get All tasks
 // @access  Public
-router.get('/tasks/', (req, res) => {
+router.get('/tasks/', passport.authenticate('jwt', { session: false }), (req, res) => {
   //console.log('req.user', req.user);
   Task.find()
     .sort({ date: -1 })
